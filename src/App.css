@@ -1,0 +1,39 @@
+body{
+    background: #141414;
+    color: #ffff;
+}
+.row{
+    display: flex;
+    overflow-x: scroll; 
+    flex-wrap: nowrap;   
+}
+.row::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in Webkit-based browsers (Chrome, Safari, Edge) */
+}
+.poster{
+    width: 350px;
+    height: 250px;
+}
+.image-container{
+    position: relative;
+    transition: transform 0.2s;
+
+}
+.image-container:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.image-container:hover .overlay{
+    opacity: 1;
+}
+.overlay{
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    width: 240px;
+    transition: 0.5s ease;
+    opacity: 0;
+    bottom: 0;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+}
