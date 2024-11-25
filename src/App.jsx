@@ -18,13 +18,21 @@ function App() {
   console.log(searchValue);
   
   const getMovieRequest = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`
+    try{
+      const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`
     const response = await fetch(url)
     const responsJson = await response.json()
     // console.log(responsJson);
     if(responsJson.Search){
       setMovies(responsJson.Search)
     }
+    }
+    catch(err){
+      console.log(err);
+      
+    }
+    
+   
 
   }
 
@@ -37,24 +45,24 @@ function App() {
     localStorage.setItem('p',JSON.stringify(items))
   }  
 
-  useEffect(() => {
-    const favMovie=JSON.parse(localStorage.getItem('p'))
-    setFavorites(favMovie)
-  }, [])
+  // useEffect(() => {
+  //   const favMovie=JSON.parse(localStorage.getItem('p'))
+  //   setFavorites(favMovie)
+  // }, [])
   
   
 const addFavoriteMovie=(movie)=>{
   const newFavoriteList=[...favorites,movie]
   setFavorites(newFavoriteList)
 
-  saveToLocalStorage(newFavoriteList)
+  // saveToLocalStorage(newFavoriteList)
 
 }
 
 const removeFavoriteMovie=(movie)=>{
   const newFavoriteList=favorites.filter((favorite)=>favorite.imdbID!==movie.imdbID)
   setFavorites(newFavoriteList)
-  saveToLocalStorage(newFavoriteList)
+  // saveToLocalStorage(newFavoriteList)
 }
 
 
