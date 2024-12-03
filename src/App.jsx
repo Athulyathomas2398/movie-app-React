@@ -5,6 +5,8 @@ import MovieListHeading from './Components/MovieListHeading'
 import SearchBox from './Components/SearchBox'
 import AddFavorites from './Components/AddFavorites'
 import RemoveFavorites from './Components/RemoveFavorites'
+import axios from 'axios'
+
 
 
 function App() {
@@ -19,13 +21,14 @@ function App() {
   
   const getMovieRequest = async (searchValue) => {
     try{
-      const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`
-    const response = await fetch(url)
-    const responsJson = await response.json()
-    // console.log(responsJson);
-    if(responsJson.Search){
-      setMovies(responsJson.Search)
-    }
+      const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`;
+      const response = await axios.get(url); // Using axios.get() instead of fetch()
+      console.log(response.data);
+
+      if (response.data.Search) {
+        setMovies(response.data.Search);
+      }
+     
     }
     catch(err){
       console.log(err);
@@ -59,11 +62,13 @@ const addFavoriteMovie=(movie)=>{
 
 }
 
-const removeFavoriteMovie=(movie)=>{
-  const newFavoriteList=favorites.filter((favorite)=>favorite.imdbID!==movie.imdbID)
-  setFavorites(newFavoriteList)
-  saveToLocalStorage(newFavoriteList)
-}
+const removeFavoriteMovie = (movie) => {
+  const newFavoriteList = favorites.filter(
+    (favorite) => favorite.imdbID !== movie.imdbID
+  );
+  setFavorites(newFavoriteList);
+  saveToLocalStorage(newFavoriteList);
+};
 
 
   return (
