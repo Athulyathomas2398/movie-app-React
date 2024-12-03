@@ -23,7 +23,7 @@ function App() {
     try{
       const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`;
       const response = await axios.get(url); // Using axios.get() instead of fetch()
-      console.log(response.data);
+      // console.log(response.data);
 
       if (response.data.Search) {
         setMovies(response.data.Search);
@@ -51,7 +51,7 @@ function App() {
   useEffect(() => {
     const favMovie=JSON.parse(localStorage.getItem('p'))
     setFavorites(favMovie)
-  }, [])
+  }, [favorites])
   
   
 const addFavoriteMovie=(movie)=>{
