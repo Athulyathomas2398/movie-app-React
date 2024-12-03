@@ -45,24 +45,24 @@ function App() {
     localStorage.setItem('p',JSON.stringify(items))
   }  
 
-  // useEffect(() => {
-  //   const favMovie=JSON.parse(localStorage.getItem('p'))
-  //   setFavorites(favMovie)
-  // }, [])
+  useEffect(() => {
+    const favMovie=JSON.parse(localStorage.getItem('p'))
+    setFavorites(favMovie)
+  }, [])
   
   
 const addFavoriteMovie=(movie)=>{
   const newFavoriteList=[...favorites,movie]
   setFavorites(newFavoriteList)
 
-  // saveToLocalStorage(newFavoriteList)
+  saveToLocalStorage(newFavoriteList)
 
 }
 
 const removeFavoriteMovie=(movie)=>{
   const newFavoriteList=favorites.filter((favorite)=>favorite.imdbID!==movie.imdbID)
   setFavorites(newFavoriteList)
-  // saveToLocalStorage(newFavoriteList)
+  saveToLocalStorage(newFavoriteList)
 }
 
 
