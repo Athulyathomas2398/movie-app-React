@@ -21,7 +21,8 @@ function App() {
   
   const getMovieRequest = async (searchValue) => {
     try{
-      const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`;
+      const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`;
+      const url1=`https://www.omdbapi.com/?apikey=fa1c9c03&t=${searchValue}`
       const response = await axios.get(url); // Using axios.get() instead of fetch()
       // console.log(response.data);
 
