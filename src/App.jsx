@@ -22,8 +22,8 @@ function App() {
   const getMovieRequest = async (searchValue) => {
     try{
       // const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=4aaa12`;
-      const url1=`https://www.omdbapi.com/?apikey=fa1c9c03&t=${searchValue}`
-      const response = await axios.get(url1); // Using axios.get() instead of fetch()
+      // const url1=`https://www.omdbapi.com/?apikey=fa1c9c03&t=${searchValue}`
+      const response = await axios.get(`https://www.omdbapi.com/?apikey=fa1c9c03&s=${searchValue}`); // Using axios.get() instead of fetch()
       // console.log(response.data);
 
       if (response.data.Search) {
@@ -45,14 +45,14 @@ function App() {
   }, [searchValue])
 
 
-  const saveToLocalStorage=(items)=>{
-    localStorage.setItem('p',JSON.stringify(items))
-  }  
+  // const saveToLocalStorage=(items)=>{
+  //   localStorage.setItem('p',JSON.stringify(items))
+  // }  
 
-  useEffect(() => {
-    const favMovie=JSON.parse(localStorage.getItem('p'))
-    setFavorites(favMovie)
-  }, [favorites])
+  // useEffect(() => {
+  //   const favMovie=JSON.parse(localStorage.getItem('p'))
+  //   setFavorites(favMovie)
+  // }, [favorites])
   
   
 const addFavoriteMovie=(movie)=>{
