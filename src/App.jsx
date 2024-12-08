@@ -45,14 +45,14 @@ function App() {
   }, [searchValue])
 
 
-  const saveToLocalStorage=(items)=>{
-    localStorage.setItem('p',JSON.stringify(items))
-  }  
+  // const saveToLocalStorage=(items)=>{
+  //   localStorage.setItem('p',JSON.stringify(items))
+  // }  
 
-  useEffect(() => {
-    const favMovie=JSON.parse(localStorage.getItem('p'))
-    setFavorites(favMovie)
-  }, [favorites])
+  // useEffect(() => {
+  //   const favMovie=JSON.parse(localStorage.getItem('p'))
+  //   setFavorites(favMovie)
+  // }, [favorites])
   
   
 const addFavoriteMovie=(movie)=>{
